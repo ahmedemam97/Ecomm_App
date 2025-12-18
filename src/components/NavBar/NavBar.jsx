@@ -49,7 +49,7 @@ function NavBar() {
           </ul>
 
           <ul className="ms-auto navbar-nav">
-            <li className=" d-flex align-items-center gap-3 me-2">
+            <ul className=" d-flex align-items-center gap-3 me-2 list-unstyled">
               <li>
                 <i className="fab fa-facebook"></i>
               </li>
@@ -62,7 +62,7 @@ function NavBar() {
               <li>
                 <i className="fab fa-instagram"></i>
               </li>
-            </li>
+            </ul>
 
             <li className="nav-item">
               <Link className="nav-link" to="login">
