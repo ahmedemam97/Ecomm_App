@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom";
+import AppLogo from "../../Assets/images/freshcart-logo.svg";
 
 function NavBar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light ">
       <div className="container">
-        <Link className="navbar-brand" to="#">
-          Navbar
+        <Link className="navbar-brand" to="">
+          <img src={AppLogo} alt="Fresh Cart Logo" />
         </Link>
         <button
           className="navbar-toggler"
