@@ -1,4 +1,4 @@
-body {
+sbody {
   margin: 0;
   font-family: var(--font-family) !important;
   -webkit-font-smoothing: antialiased;
@@ -57,4 +57,8 @@ a:hover {
 }
 .bg-main-light {
   background-color: var(--light-color) !important;
+}
+
+.sc-bRKDuR svg {
+  padding: 5px !important;
 }

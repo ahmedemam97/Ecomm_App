@@ -9,6 +9,9 @@ import Register from "./components/Register/Register";
 import Layout from "./components/Layout/Layout";
 import Cart from "./components/Cart/Cart";
 import Brands from "./components/Brands/Brands";
+import CounterContextProvider from "./Context/CounterContext";
+import UserContextProvider, { UserContext } from "./Context/UserContext";
+import { useContext, useEffect } from "react";
 
 let routers = createBrowserRouter([
   {
@@ -28,10 +31,22 @@ let routers = createBrowserRouter([
 ]);
 
 function App() {
+
+  let { setUserToken } = useContext(UserContext)
+  useEffect(() => {
+    if (localStorage.getItem('userToken') != null) {
+      setUserToken(localStorage.getItem('userToken'))
+    }
+  }, [])
+
   return (
-    <RouterProvider router={routers}>
-      <Layout />
-    </RouterProvider>
+
+    <CounterContextProvider>
+      <RouterProvider router={routers}>
+        <Layout />
+      </RouterProvider>
+    </CounterContextProvider>
+
   );
 }
 
