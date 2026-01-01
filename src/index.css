@@ -30,8 +30,8 @@ code {
 }
 a,
 a:hover {
-  color: black;
-  text-decoration: none;
+  color: black !important;
+  text-decoration: none !important;
 }
 .product:hover {
   box-shadow: var(--shadow);

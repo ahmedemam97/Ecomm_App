@@ -73,7 +73,7 @@ function Login() {
             visible={true} className='spinner'
           />)
           :
-          (<input type="submit" disabled={!(formik.isValid && formik.dirty)} className="btn bg-main me-auto d-inline-block" />)
+          (<input type="submit" disabled={!(formik.isValid && formik.dirty)} className="btn bg-main me-auto d-inline-block text-white" />)
         }
 
         <Link to='/register'>Have an account?</Link>

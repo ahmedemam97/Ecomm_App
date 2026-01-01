@@ -1,6 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./App.css";
-import Home from "./components/Home/Home";
+import FeaturedProducts from "./components/Home/FeaturedProducts";
 import Products from "./components/Products/Products";
 import Categories from "./components/Categories/Categories";
 import NotFound from "./components/NotFound/NotFound";
@@ -10,19 +10,23 @@ import Layout from "./components/Layout/Layout";
 import Cart from "./components/Cart/Cart";
 import Brands from "./components/Brands/Brands";
 import CounterContextProvider from "./Context/CounterContext";
-import UserContextProvider, { UserContext } from "./Context/UserContext";
+import { UserContext } from "./Context/UserContext";
 import { useContext, useEffect } from "react";
+import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
+import ProductDetails from "./components/ProductDetails/ProductDetails";
+import CartContextProvider from "./Context/CartContext";
 
 let routers = createBrowserRouter([
   {
     path: "/",
     element: <Layout />,
     children: [
-      { index: true, element: <Home /> },
-      { path: "products", element: <Products /> },
-      { path: "categories", element: <Categories /> },
-      { path: "cart", element: <Cart /> },
-      { path: "brands", element: <Brands /> },
+      { index: true, element: <ProtectedRoute><FeaturedProducts /></ProtectedRoute> },
+      { path: "products", element: <ProtectedRoute><Products /></ProtectedRoute> },
+      { path: "categories", element: <ProtectedRoute><Categories /></ProtectedRoute> },
+      { path: "cart", element: <ProtectedRoute><Cart /></ProtectedRoute> },
+      { path: "brands", element: <ProtectedRoute><Brands /></ProtectedRoute> },
+      { path: "productDetails/:id", element: <ProtectedRoute><ProductDetails /></ProtectedRoute> },
       { path: "login", element: <Login /> },
       { path: "register", element: <Register /> },
       { path: "*", element: <NotFound /> },
@@ -41,11 +45,13 @@ function App() {
 
   return (
 
-    <CounterContextProvider>
-      <RouterProvider router={routers}>
-        <Layout />
-      </RouterProvider>
-    </CounterContextProvider>
+    <CartContextProvider>
+      <CounterContextProvider>
+        <RouterProvider router={routers}>
+          <Layout />
+        </RouterProvider>
+      </CounterContextProvider>
+    </CartContextProvider>
 
   );
 }
