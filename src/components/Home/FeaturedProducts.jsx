@@ -1,5 +1,4 @@
-import { useContext } from "react";
-import { CounterContext } from "../../Context/CounterContext";
+import { useContext, useState } from "react";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -7,8 +6,13 @@ import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { BallTriangle } from "react-loader-spinner";
 import { Link } from "react-router-dom";
 import { CartContext } from "../../Context/CartContext";
-
+import toast, { Toaster } from "react-hot-toast";
+import Slider from "react-slick";
+import CategorySlider from "../CategorySlider/CategorySlider";
+import MainSlider from "../MainSlider/MainSlider";
+import { Helmet } from "react-helmet";
 function FeaturedProducts() {
+  let [cart, setCart] = useState(false);
   let { addToCart } = useContext(CartContext)
 
   function getFeaturedProducts() {
@@ -24,13 +28,32 @@ function FeaturedProducts() {
   )
 
   async function addProduct(id) {
-    let response = await addToCart(id)
-    console.log(response);
+    try {
+      setCart(true)
+      await addToCart(id);
+      toast.success("Product added to cart successfully")
+    } catch (err) {
+      toast.error(err)
+    } finally {
+      setCart(false)
+    }
 
   }
 
+
+
   return <>
     {!isLoading ? <div className="">
+      <Toaster />
+
+      <div>
+        <Helmet >
+          <title>Featured Products</title>
+        </Helmet>
+        <MainSlider />
+        <CategorySlider />
+      </div>
+
       <h2>FeaturedProducts</h2>
       {console.log(data?.data.data)}
       <div className="row gap-2">
@@ -54,7 +77,24 @@ function FeaturedProducts() {
                 </div>
               </div>
             </Link>
-            <input type="button" onClick={() => addProduct(product.id)} className="btn bg-main text-white w-100" value={'Add To Cart'} />
+
+            <button type="button" onClick={() => addProduct(product.id)} className="btn bg-main text-white w-100 d-flex justify-content-center" >
+              {cart ?
+                <BallTriangle
+                  height={24}
+                  width={24}
+                  radius={5}
+                  color="#fff"
+                  ariaLabel="ball-triangle-loading"
+                  wrapperStyle={{ padding: '0' }}
+                  wrapperClass=""
+                  visible={true}
+                />
+                :
+                'Add To Cart'
+              }
+            </button>
+
           </div>
         })}
 

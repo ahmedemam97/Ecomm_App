@@ -62,3 +62,18 @@ a:hover {
 .sc-bRKDuR svg {
   padding: 5px !important;
 }
+
+.offline {
+  bottom: 20px;
+  position: fixed;
+  background-color: rgb(241, 239, 236);
+  width: fit-content;
+  padding: 10px;
+  left: 20px;
+  border-radius: 5px;
+  box-shadow: 1px 1px 7px -4px;
+}
+
+.offline i {
+  color: red;
+}
