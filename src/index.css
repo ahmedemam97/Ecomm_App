@@ -77,3 +77,23 @@ a:hover {
 .offline i {
   color: red;
 }
+
+.cartDetails {
+  background-color: lightgray;
+  border-radius: 5px;
+}
+
+button.countBtn {
+  border: #0aad0a solid 1px !important;
+  width: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 4px 2px;
+}
+
+/* .countDiv {
+  width: fit-content;
+}
+.itemCount {
+  width: 30px !important;
+} */

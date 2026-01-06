@@ -36,11 +36,10 @@ function MainSlider() {
   };
 
   return (<div className="mb-5 mt-3 row gx-0">
-    {console.log(data)}
     <div className="col-md-8">
       <Slider {...settings}>
         {categoryImgs.map((category, index) => {
-          return <img height={300} style={{ objectFit: 'cover' }} src={category} alt={category[index]} />
+          return <img height={400} style={{ objectFit: 'cover' }} src={category} alt={category[index]} />
         })}
       </Slider>
 
@@ -48,8 +47,8 @@ function MainSlider() {
     </div>
 
     <div className="col-md-4">
-      <img src={img8} alt="" style={{ objectFit: 'cover' }} className="w-100" height={150} />
-      <img src={img1} alt="" style={{ objectFit: 'cover' }} className="w-100" height={150} />
+      <img src={img8} alt="" style={{ objectFit: 'cover' }} className="w-100" height={200} />
+      <img src={img1} alt="" style={{ objectFit: 'cover' }} className="w-100" height={200} />
     </div>
   </div>)
 }

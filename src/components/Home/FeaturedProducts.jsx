@@ -12,7 +12,7 @@ import CategorySlider from "../CategorySlider/CategorySlider";
 import MainSlider from "../MainSlider/MainSlider";
 import { Helmet } from "react-helmet";
 function FeaturedProducts() {
-  let [cart, setCart] = useState(false);
+  let [cartLoading, setCartLoading] = useState(null);
   let { addToCart } = useContext(CartContext)
 
   function getFeaturedProducts() {
@@ -29,13 +29,13 @@ function FeaturedProducts() {
 
   async function addProduct(id) {
     try {
-      setCart(true)
+      setCartLoading(id)
       await addToCart(id);
       toast.success("Product added to cart successfully")
     } catch (err) {
       toast.error(err)
     } finally {
-      setCart(false)
+      setCartLoading(null)
     }
 
   }
@@ -55,15 +55,14 @@ function FeaturedProducts() {
       </div>
 
       <h2>FeaturedProducts</h2>
-      {console.log(data?.data.data)}
       <div className="row gap-2">
         {data?.data.data.map((product) => {
           return <div className="product mx-auto col-lg-2 col-md-3 col-sm-5 mt-5 cursor-pointer d-flex flex-column justify-content-between p-1" key={product.id}>
             <Link to={`productDetails/${product.id}`} >
               <div>
-                <img className="w-100" src={product.imageCover} alt={product.title.split(' ', 2)} />
+                <img className="w-100" src={product.imageCover} alt={product.title} />
                 <div className="text-main">{product.brand.name}</div>
-                <p>{product.title.split()}</p>
+                <p>{product.title.split(' ').slice(0, 2).join(' ')}</p>
               </div>
               <div className="">
                 <div className="d-flex justify-content-between">
@@ -79,7 +78,7 @@ function FeaturedProducts() {
             </Link>
 
             <button type="button" onClick={() => addProduct(product.id)} className="btn bg-main text-white w-100 d-flex justify-content-center" >
-              {cart ?
+              {cartLoading === product.id ?
                 <BallTriangle
                   height={24}
                   width={24}

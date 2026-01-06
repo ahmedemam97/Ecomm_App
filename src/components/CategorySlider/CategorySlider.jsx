@@ -21,10 +21,9 @@ function CategorySlider() {
   };
 
   return (<div>
-    {console.log(data)}
     <Slider {...settings}>
       {data?.data.data ? data?.data.data.map((category) => {
-        return <img height={150} style={{ objectFit: 'cover' }} src={category.image} alt={category.name} />
+        return <img key={category._id} height={150} style={{ objectFit: 'cover' }} src={category.image} alt={category.name} />
       }) : ''}
     </Slider>
   </div>)
