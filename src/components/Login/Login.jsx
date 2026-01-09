@@ -10,7 +10,8 @@ function Login() {
   let [error, setError] = useState(null)
   let [loader, setLoader] = useState(false)
   let navigate = useNavigate()
-  let { setUserToken } = useContext(UserContext);
+  let { setUserToken, setUserData } = useContext(UserContext);
+
 
 
   async function loginSubmit(values) {
@@ -27,7 +28,8 @@ function Login() {
       setLoader(false)
       navigate('/')
       setUserToken(data.token)
-      localStorage.setItem('userToken', data.token)
+      setUserData(data)
+      localStorage.setItem('userToken', data.token);
     }
   }
   let passwordRegex = /^[A-Za-z0-9]{6,}$/;

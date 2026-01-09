@@ -39,7 +39,7 @@ function MainSlider() {
     <div className="col-md-8">
       <Slider {...settings}>
         {categoryImgs.map((category, index) => {
-          return <img height={400} style={{ objectFit: 'cover' }} src={category} alt={category[index]} />
+          return <img key={index} height={400} style={{ objectFit: 'cover' }} src={category} alt={category[index]} />
         })}
       </Slider>
 

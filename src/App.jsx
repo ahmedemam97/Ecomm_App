@@ -15,6 +15,7 @@ import { useContext, useEffect } from "react";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import ProductDetails from "./components/ProductDetails/ProductDetails";
 import CartContextProvider from "./Context/CartContext";
+import Profile from "./components/Profile/Profile";
 
 let routers = createBrowserRouter([
   {
@@ -26,6 +27,7 @@ let routers = createBrowserRouter([
       { path: "categories", element: <ProtectedRoute><Categories /></ProtectedRoute> },
       { path: "cart", element: <ProtectedRoute><Cart /></ProtectedRoute> },
       { path: "brands", element: <ProtectedRoute><Brands /></ProtectedRoute> },
+      { path: "profile", element: <ProtectedRoute><Profile /></ProtectedRoute> },
       { path: "productDetails/:id", element: <ProtectedRoute><ProductDetails /></ProtectedRoute> },
       { path: "login", element: <Login /> },
       { path: "register", element: <Register /> },
