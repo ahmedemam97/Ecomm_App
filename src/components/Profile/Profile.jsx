@@ -10,7 +10,7 @@ function Profile() {
   if (encodedToken) {
     decodedToken = jwtDecode(encodedToken)
   }
-  console.log(userData);
+  // console.log(cartId);
 
   return <div>
     <h2>Profile</h2>

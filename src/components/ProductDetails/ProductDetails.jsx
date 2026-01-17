@@ -21,7 +21,7 @@ function ProductDetails() {
     return productData;
   }
 
-  let { data, isLoading, isError } = useQuery({ queryKey: ["ProductDetails"], queryFn: () => getProductDetails(id) });
+  let { data, isLoading, isError, isFetching } = useQuery({ queryKey: ["ProductDetails"], queryFn: () => getProductDetails(id) });
 
   async function addProduct(id) {
     try {
@@ -36,7 +36,7 @@ function ProductDetails() {
   }
 
   return <>
-    {isLoading ?
+    {isFetching || isLoading ?
 
       <div className="d-flex justify-content-center">
         <BallTriangle

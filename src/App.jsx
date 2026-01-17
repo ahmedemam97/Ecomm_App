@@ -16,6 +16,8 @@ import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import ProductDetails from "./components/ProductDetails/ProductDetails";
 import CartContextProvider from "./Context/CartContext";
 import Profile from "./components/Profile/Profile";
+import Payment from "./components/Payment/Payment";
+import AllOrders from "./components/AllOrders/AllOrders";
 
 let routers = createBrowserRouter([
   {
@@ -28,6 +30,8 @@ let routers = createBrowserRouter([
       { path: "cart", element: <ProtectedRoute><Cart /></ProtectedRoute> },
       { path: "brands", element: <ProtectedRoute><Brands /></ProtectedRoute> },
       { path: "profile", element: <ProtectedRoute><Profile /></ProtectedRoute> },
+      { path: "payment", element: <ProtectedRoute><Payment /></ProtectedRoute> },
+      { path: "allOrders", element: <ProtectedRoute><AllOrders /></ProtectedRoute> },
       { path: "productDetails/:id", element: <ProtectedRoute><ProductDetails /></ProtectedRoute> },
       { path: "login", element: <Login /> },
       { path: "register", element: <Register /> },

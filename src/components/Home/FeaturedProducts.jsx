@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -7,16 +7,19 @@ import { BallTriangle } from "react-loader-spinner";
 import { Link } from "react-router-dom";
 import { CartContext } from "../../Context/CartContext";
 import toast, { Toaster } from "react-hot-toast";
-import Slider from "react-slick";
 import CategorySlider from "../CategorySlider/CategorySlider";
 import MainSlider from "../MainSlider/MainSlider";
 import { Helmet } from "react-helmet";
+import { UserContext } from "../../Context/UserContext";
 function FeaturedProducts() {
   let [cartLoading, setCartLoading] = useState(null);
   let { addToCart } = useContext(CartContext)
+  let { userData } = useContext(UserContext);
+
 
   function getFeaturedProducts() {
     let data = axios.get('https://ecommerce.routemisr.com/api/v1/products');
+
     return data;
   }
 
@@ -40,6 +43,9 @@ function FeaturedProducts() {
 
   }
 
+  useEffect(() => {
+    console.log(userData);
+  }, [])
 
 
   return <>
