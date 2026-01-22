@@ -18,6 +18,9 @@ import CartContextProvider from "./Context/CartContext";
 import Profile from "./components/Profile/Profile";
 import Payment from "./components/Payment/Payment";
 import AllOrders from "./components/AllOrders/AllOrders";
+import ForgetPassword from "./components/ForgetPassword/ForgetPassword";
+import ResetCode from "./components/ResetCode/ResetCode";
+import ChangePassword from "./components/ChangePassword/ChangePassword";
 
 let routers = createBrowserRouter([
   {
@@ -34,7 +37,10 @@ let routers = createBrowserRouter([
       { path: "allOrders", element: <ProtectedRoute><AllOrders /></ProtectedRoute> },
       { path: "productDetails/:id", element: <ProtectedRoute><ProductDetails /></ProtectedRoute> },
       { path: "login", element: <Login /> },
+      { path: "forgetPassword", element: <ForgetPassword /> },
       { path: "register", element: <Register /> },
+      { path: "resetCode", element: <ResetCode /> },
+      { path: "changePassword", element: <ChangePassword /> },
       { path: "*", element: <NotFound /> },
     ],
   },

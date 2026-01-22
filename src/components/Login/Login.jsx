@@ -63,7 +63,7 @@ function Login() {
         {formik.touched.password && formik.errors.password ? <div className="alert alert-danger p-2 mt-2">{formik.errors.password}</div> : ''}
       </div>
 
-      <div className="mt-3 d-flex justify-content-between">
+      <div className="mt-3 d-flex justify-content-between gap-2">
         {loader ? (
           <BallTriangle
             height="45"
@@ -79,6 +79,7 @@ function Login() {
         }
 
         <Link to='/register'>Have an account?</Link>
+        <Link to='/forgetPassword'>Forget Password?</Link>
       </div>
     </form>
   </div>
